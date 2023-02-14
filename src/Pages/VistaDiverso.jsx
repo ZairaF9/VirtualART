@@ -4,11 +4,13 @@ import VistaDvs from '../components/VistaDvs';
 
 
 
-export default function VistaDiverso(){
+const VistaDiverso = () =>{
     return(
         <div>
            <Navbar/>
            <VistaDvs/>
         </div>
-    )
-}
+    );
+};
+
+export default VistaDiverso

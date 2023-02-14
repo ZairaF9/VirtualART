@@ -4,11 +4,13 @@ import VistaImg from '../components/VistaImg';
 
 
 
-export default function VistaImagen(){
+const VistaImagen = () =>{
     return(
         <div>
            <Navbar/>
            <VistaImg/>
         </div>
-    )
-}
+    );
+};
+
+export default VistaImagen

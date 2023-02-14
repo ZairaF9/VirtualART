@@ -3,11 +3,13 @@ import FormCrearPin from '../components/FormCrearPin';
 import Navbar from '../components/Navbar';
 
 
-export default function CrearPin(){
+const CrearPin = () => {
     return(
         <div>
            <Navbar/>
            <FormCrearPin/>
         </div>
-    )
-}
+    );
+};
+
+export default CrearPin

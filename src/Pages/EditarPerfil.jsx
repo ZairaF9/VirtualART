@@ -3,11 +3,13 @@ import FormPerfil from '../components/FormPerfil';
 import Navbar from '../components/Navbar';
 
 
-export default function EditarPerfil(){
+const EditarPerfil = () =>{
     return(
         <div>
            <Navbar/>
            <FormPerfil/>
         </div>
-    )
-}
+    );
+};
+
+export default EditarPerfil
