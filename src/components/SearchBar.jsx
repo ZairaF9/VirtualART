@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-export default function SearchBar() {
+const SearchBar = () => {
 
     return (
         <div className="w-[400px] border-none rounded flex items-center space-x-5">
@@ -10,5 +10,7 @@ export default function SearchBar() {
             </form>
             <i className="fa-solid fa-magnifying-glass px-2 text-white"><FaSearch /></i>
         </div>
-    )
-}
+    );
+};
+
+export default SearchBar

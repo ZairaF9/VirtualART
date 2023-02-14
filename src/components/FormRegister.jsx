@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function FormRegister() {
+const FormRegister = () => {
 
     return (
         <div>
@@ -28,5 +28,7 @@ export default function FormRegister() {
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
+
+export default FormRegister

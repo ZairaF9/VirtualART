@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Circle} from 'react-awesome-shapes';
 
-export default function Circles(){
+const Circles = () =>{
     return(
         <div>
   <div>
@@ -115,5 +115,7 @@ export default function Circles(){
         />
       </div>
         </div>
-    )
-}
+    );
+};
+
+export default Circles

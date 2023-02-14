@@ -2,9 +2,7 @@ import React from 'react';
 import Flores from '../images/flores.jpeg'
 import VistaContenidoDvs from './ContenidoVistaDiverso';
 
-
-
-export default function VistaDvs(){
+const VistaDvs = () =>{
     return(
         <div>
         <div class="group relative items-center justify-center overflow-hidden ">
@@ -17,5 +15,7 @@ export default function VistaDvs(){
         </div>
         <VistaContenidoDvs/>
         </div>
-    )
-}
+    );
+};
+
+export default VistaDvs

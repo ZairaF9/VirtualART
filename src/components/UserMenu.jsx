@@ -1,8 +1,7 @@
 import React, { useRef, useState } from 'react';
-import Logo from "../images/login.png";
 import User from "../images/user.png";
 
-export default function UserMenu() {
+const UserMenu = () => {
 
     const Menu = ['Perfil', 'Creaciones', 'Tableros', 'Salir'];
     const [open, setOpen] = useState(false);
@@ -33,5 +32,7 @@ export default function UserMenu() {
                 </div>
             }
         </div>
-    )
-}
+    );
+};
+
+export default UserMenu

@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {useForm} from 'react-hook-form'
 
-export default function FormPerfil() {
+const FormPerfil = () => {
 
     const {editar, handleSubmit, watch, formState:{errors}} = useForm();
 const onSubmit = (data) => {
@@ -18,5 +18,7 @@ return (
     </div>
 )
 }
+
+export default FormPerfil
 
 

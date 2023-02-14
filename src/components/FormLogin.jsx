@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 
-export default function FormLogin() {
+const FormLogin = () => {
 
     return (
         <div>
@@ -30,5 +30,7 @@ export default function FormLogin() {
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
+
+export default FormLogin
