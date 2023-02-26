@@ -14,7 +14,7 @@ import EditarPerfil from "./Pages/EditarPerfil";
 function App() {
   return (
     <div>
-        <EditarPerfil/>
+        <Login/>
     </div>
   );
 }
