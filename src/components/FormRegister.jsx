@@ -5,6 +5,7 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 const FormRegister = () => {
 
     const [type,setType] = useState("password");
+    const [typeC,setTypeCC] = useState("password");
 
     return (
         <div>
@@ -52,17 +53,17 @@ const FormRegister = () => {
                     <input
                         className='w-full border-2 border-transparent shadow-lg rounded-xl p-4 mt-1 bg-white'
                         placeholder='Ingrese nuevamente la contraseña'
-                        type={type}
+                        type={typeC}
                     />
-                    {type === "password" ? (
+                    {typeC === "password" ? (
                         <span className='icon-span text-2xl text-[#C4E5DC]'
-                            onClick={() => setType("text")}
+                            onClick={() => setTypeCC("text")}
                         >
                             <AiFillEyeInvisible />
                         </span>
                     ) : (
                         <span className='icon-span text-2xl text-[#C4E5DC]'
-                            onClick={() => setType("password")}
+                            onClick={() => setTypeCC("password")}
                         >
                             <AiFillEye />
                         </span>
