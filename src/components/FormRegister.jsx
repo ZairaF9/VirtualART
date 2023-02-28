@@ -4,6 +4,8 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 
 const FormRegister = () => {
 
+    const [type,setType] = useState("password");
+
     return (
         <div>
             <h2 className='text-5xl font-semibold text-[#003142]'>Registrate a VisualART</h2>

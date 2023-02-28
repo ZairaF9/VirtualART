@@ -5,6 +5,8 @@ import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
 
 const FormLogin = () => {
 
+    const [type,setType] = useState("password");
+
     const login = async ()=>{
         const passwordtxt=document.getElementById("password");
         const usernametxt=document.getElementById("username");
