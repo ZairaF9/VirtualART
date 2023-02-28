@@ -4,7 +4,7 @@ import {Circle} from 'react-awesome-shapes';
 const Circles = () =>{
     return(
         <div>
-  <div>
+  <div className='hidden xl:flex h-full'>
       <Circle
           color="#C4E5DC"
           size={['150px', '150px', '180px', '180px']}
@@ -15,7 +15,7 @@ const Circles = () =>{
           
         />
       </div>
-      <div>
+      <div className='hidden xl:flex h-full'>
       <Circle
           color="#C4E5DC"
           size={['30px', '30px', '30px', '30px']}
