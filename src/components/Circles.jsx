@@ -7,7 +7,7 @@ const Circles = () =>{
   <div className='hidden xl:flex h-full'>
       <Circle
           color="#C4E5DC"
-          size={['150px', '150px', '180px', '180px']}
+          size={['130px', '130px', '150px', '150px']}
           zIndex={2}
           position="absolute"
           left = "-35px"
