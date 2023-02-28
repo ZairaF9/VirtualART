@@ -103,17 +103,6 @@ const Circles = () =>{
           
         />
       </div>
-      <div className='hidden 2xl:flex h-full'>
-      <Circle
-          color="#C4E5DC"
-          size={['30px', '30px', '30px', '30px']}
-          zIndex={2}
-          position="absolute"
-          left = "50px"
-          top= "365px"
-          
-        />
-      </div>
         </div>
     );
 };
