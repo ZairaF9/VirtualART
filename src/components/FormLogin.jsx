@@ -1,15 +1,20 @@
 import React,{useState} from 'react';
-import { json } from 'react-router';
-import {Link} from "react-router-dom"
-import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
+import { json, useNavigate } from 'react-router';
+import {Link} from "react-router-dom";
+import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai";
 
 const FormLogin = () => {
 
     const [type,setType] = useState("password");
 
+    const navigate = useNavigate();
+    function irAHome() {
+        navigate("/home");
+      }
+
     const login = async ()=>{
-        const passwordtxt=document.getElementById("password");
-        const usernametxt=document.getElementById("username");
+        const passwordtxt = document.getElementById("password");
+        const usernametxt = document.getElementById("username");
 
         const bodyFetch = {username: usernametxt.value, password: passwordtxt.value};
 
@@ -31,9 +36,17 @@ const FormLogin = () => {
             }
 
         });
-        const myJson = await response.json(); //extract JSON from the http response
+        const status = await response.status; //Obtengo el código de respuesta (401 = fallido, 200 = inició sesión)
 
-        console.log(myJson);
+        console.log(status);
+
+        if(status == 200){
+            //alert("Bienvenido");
+            irAHome();
+        }
+        else if(status == 401){
+            alert("Usuario o contraseña incorrectos");
+        }
     };
 
     return (
@@ -41,7 +54,7 @@ const FormLogin = () => {
         <div>
             <h2 className='text-5xl font-semibold text-[#003142]'>Bienvenido a VisualART</h2>
             <p className='font-medium text-lg text-gray-500 mt-4'>¡Bievenido! por favor ingrese los datos.</p>
-            <form className='mt-8'>
+            <form className='mt-8' id = "formLogin">
                 <div>
                     <label className='text-lg font-medium'>Email</label>
                     <input
