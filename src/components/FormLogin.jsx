@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { json } from 'react-router';
 import {Link} from "react-router-dom"
+import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
 
 const FormLogin = () => {
 
@@ -53,8 +54,21 @@ const FormLogin = () => {
                         id='password'
                         className='w-full border-2 border-transparent shadow-lg rounded-xl p-4 mt-1 bg-white'
                         placeholder='Ingrese su contraseña'
-                        type="password"
+                        type={type}
                     />
+                    {type === "password"?(
+                        <span className='icon-spanL text-2xl text-[#C4E5DC] flex flex-end justify-end mx-5'
+                        onClick = {() => setType("text")}
+                        >
+                            <AiFillEyeInvisible/>
+                        </span>
+                    ):(
+                        <span className='icon-spanL text-2xl text-[#C4E5DC] flex flex-end justify-end mx-5'
+                        onClick={()=> setType("password")}
+                        >
+                        <AiFillEye/>
+                        </span>
+                    )}
                 </div>
                 <div className='mt-8 flex justify-center items-center'>
                 <Link to="/registro"><button className='font-medium text-base text-[#003142]'>¿No tienes cuenta?</button></Link> 

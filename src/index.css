@@ -17,3 +17,15 @@ code {
     monospace;
 }
 
+.icon-span{
+  cursor: pointer;
+  position: relative;
+  top:-40px;
+  left: 440px;
+}
+
+.icon-spanL{
+  cursor: pointer;
+  position: relative;
+  top:-40px;
+}
