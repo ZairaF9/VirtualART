@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { json } from 'react-router';
+import {Link} from "react-router-dom"
 
 const FormLogin = () => {
 
@@ -33,6 +34,7 @@ const FormLogin = () => {
     };
 
     return (
+        /* <Link to="/home">Entrar</Link> este sirve para dirigirse al home */
         <div>
             <h2 className='text-5xl font-semibold text-[#003142]'>Bienvenido a VisualART</h2>
             <p className='font-medium text-lg text-gray-500 mt-4'>¡Bievenido! por favor ingrese los datos.</p>
@@ -55,7 +57,7 @@ const FormLogin = () => {
                     />
                 </div>
                 <div className='mt-8 flex justify-center items-center'>
-                    <button className='font-medium text-base text-[#003142]'>¿No tienes cuenta?</button>
+                <Link to="/registro"><button className='font-medium text-base text-[#003142]'>¿No tienes cuenta?</button></Link> 
                 </div>
                 <div className='mt-8 flex flex-col gap-y-4'>
                     <button className=' active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out hover:bg-[#E3BC8D] transition-all py-3 rounded-xl bg-[#D3AB7A] text-white text-lg font-bold' type='button' onClick={ () => login()}>Entrar</button>
