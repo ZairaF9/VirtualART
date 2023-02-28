@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import UserMenu from './UserMenu';
+import {Link} from "react-router-dom"
 
 const Navbar = () => {
     return (
@@ -15,14 +16,14 @@ const Navbar = () => {
                 </div>
                 <div className="flex items-center space-x-5 text-md">
                     <ul className="flex space-x-10 text-gray-50 font-medium">
-                        <li>
-                            <a href="#" className='hover:text-[#2bc5a4]'>Inicio</a>
+                    <li>
+                            <a href="#" className='hover:text-[#2bc5a4]'><Link to="/home">Inicio</Link></a>
                         </li>
                         <li>
-                            <a href="#" className='hover:text-[#2bc5a4]'>Diverso</a>
+                            <a href="#" className='hover:text-[#2bc5a4]'><Link to="/diverso">Diverso</Link></a>
                         </li>
                         <li>
-                            <a href="#" className='hover:text-[#2bc5a4]'>Crear</a>
+                            <a href="#" className='hover:text-[#2bc5a4]'><Link to="/crearpin">Crear</Link></a>
                         </li>
                     </ul>
                 </div>

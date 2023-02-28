@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link} from "react-router-dom"
 
 const FormRegister = () => {
 
@@ -21,7 +22,7 @@ const FormRegister = () => {
                     />
                 </div>
                 <div className='mt-8 flex justify-center items-center'>
-                    <button className='font-medium text-base text-[#003142]'>¿No tienes cuenta?</button>
+                <Link to="/login">  <button className='font-medium text-base text-[#003142]'>¿Ya tienes cuenta?</button></Link>
                 </div>
                 <div className='mt-8 flex flex-col gap-y-4'>
                     <button className=' active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out hover:bg-[#E3BC8D] transition-all py-3 rounded-xl bg-[#D3AB7A] text-white text-lg font-bold' type='submit'>Entrar</button>
