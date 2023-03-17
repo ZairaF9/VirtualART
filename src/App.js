@@ -11,10 +11,13 @@ import VistaDiverso from "./Pages/VistaDiverso";
 import EditarPerfil from "./Pages/EditarPerfil";
 
 
+import Test from "./Pages/Test";
+
+
 function App() {
   return (
     <div>
-        <EditarPerfil/>
+        <Login/>
     </div>
   );
 }
