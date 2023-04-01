@@ -22,7 +22,15 @@ import Perfil from "./Pages/Perfil";
 function App() {
   return (
     <div>
-        <Perfil/>
+       <Router>
+      <Routes>
+          <Route path="*" element={<Login/>}></Route>
+          <Route path="/home" element={<Home/>}></Route>
+          <Route path="/registro" element={<Register/>}></Route>
+          <Route path="/diverso" element={<Diverso/>}></Route>
+          <Route path="/crearpin" element={<CrearPin/>}></Route>
+      </Routes>
+      </Router>
     </div>
   );
 }

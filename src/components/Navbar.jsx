@@ -13,16 +13,16 @@ const Navbar = () => {
                     <i className="fa-solid fa-bars"></i>
                     <h1 className="text-xl font-bold">VirtualART</h1>
                 </div>
-                <div className="flex items-center space-x-5 text-md">
+                <div className="flex items-center space-x-5 text-md mt-3">
                     <ul className="flex space-x-10 text-gray-50 font-medium">
                         <li>
-                            <a href="#" className='hover:text-[#2bc5a4]'>Inicio</a>
+                            <span className='hover:text-[#2bc5a4]'>Inicio</span>
                         </li>
                         <li>
-                            <a href="#" className='hover:text-[#2bc5a4]'>Diverso</a>
+                            <span className='hover:text-[#2bc5a4]'>Diverso</span>
                         </li>
                         <li>
-                            <a href="#" className='hover:text-[#2bc5a4]'>Crear</a>
+                            <span className='hover:text-[#2bc5a4]'>Crear</span>
                         </li>
                     </ul>
                 </div>
