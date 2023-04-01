@@ -3,6 +3,7 @@ import Flores from '../images/flores.jpeg'
 import VistaContenidoDvs from './ContenidoVistaDiverso';
 
 const VistaDvs = () =>{
+    
     return(
         <div>
         <div class="group relative items-center justify-center overflow-hidden ">

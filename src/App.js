@@ -12,12 +12,17 @@ import EditarPerfil from "./Pages/EditarPerfil";
 
 
 import Test from "./Pages/Test";
+import FormLogin from "./components/FormLogin";
+import AllCategorias from "./Pages/TodasCategorias";
+import CrearTablero from "./components/CrearTablero";
+import Navbar from "./components/Navbar";
+import Perfil from "./Pages/Perfil";
 
 
 function App() {
   return (
     <div>
-        <Login/>
+        <Perfil/>
     </div>
   );
 }

@@ -8,6 +8,7 @@ const EditarPerfil = () =>{
         <div>
            <Navbar/>
            <FormPerfil/>
+           
         </div>
     );
 };

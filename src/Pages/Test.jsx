@@ -7,7 +7,7 @@ const Test = () => {
 
         <>
             <Navbar />
-            <h2> Hola soy MKZEX </h2>
+            <h2> </h2>
 
         </>
     );

@@ -6,6 +6,8 @@ const FormRegister = () => {
         <div>
             <form className='mt-8'>
 
+            <label className='block text-gray-700 text-center font-bold mt-3 mb-2'>Regístrate</label>
+
                 <div className='mt-6'>
                     <label className='text-lg font-medium'>Nombre de Usuario</label>
                     <input
