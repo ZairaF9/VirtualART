@@ -1,9 +1,49 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import UserMenu from './UserMenu';
+import { json, useNavigate } from 'react-router';
 import {Link} from "react-router-dom"
+import { useEffect } from 'react';
+import Cookies from 'universal-cookie';
 
 const Navbar = () => {
+
+    const navigate = useNavigate();
+    function goToLogin() {
+        navigate("/login");
+      }
+
+    useEffect(()=>{
+        checkSession();
+    },[]);
+
+    async function checkSession(){
+        console.log("Obteniendo datos de usuario para la sesión");
+
+        const cookies = new Cookies();
+        if(cookies.get("ID_Usuario") == "null"){
+            goToLogin();
+            return;
+        }
+        const response = await fetch('http://localhost:3001/api/users/' + cookies.get("ID_Usuario"),{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+
+        });
+        const status = await response.status; 
+        const user = await response.json();
+
+        if(status == 200){
+            console.log(user);
+        }
+        else if(status == 404){
+            alert("Hubo un oroblema, volviendo al login");
+            goToLogin();
+        }
+    }
+
     return (
         <div>
             <div className="bg-[#EBCAA1] text-white flex justify-between items-center py-2 px-5">

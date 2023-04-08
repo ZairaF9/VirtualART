@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
+import { json, useNavigate } from 'react-router';
+import Cookies from 'universal-cookie';
 import User from "../images/user.png";
 
 const UserMenu = () => {
 
-    const Menu = ['Perfil', 'Creaciones', 'Tableros', 'Salir'];
     const [open, setOpen] = useState(false);
 
     const menuRef = useRef();
@@ -15,6 +16,17 @@ const UserMenu = () => {
         }
     });
 
+    const navigate = useNavigate();
+    function goToLogin() {
+        navigate("/login");
+      }
+
+    async function logOff(){
+        const cookies = new Cookies();
+        cookies.set('ID_Usuario', null, { path: '/' });
+        goToLogin();
+    }
+
     return (
         <div>
             <div className="flex items-center space-x-5 text-base">
@@ -25,9 +37,10 @@ const UserMenu = () => {
 
                 <div ref={menuRef} className='bg-white p-4 w-40 shadow-lg absolute right-5 top-20 text-black rounded-lg'>
                     <ul>
-                        {Menu.map((menu) => (
-                            <li onClick={() => setOpen(false)} className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' key={menu}>{menu}</li>
-                        ))}
+                    <li className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' id = "btnProfile">Perfil</li>
+                    <li className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' id = "btnPost">Creaciones</li>
+                    <li className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' id = "btnBoard">Tableros</li>
+                    <li onClick={() => logOff()} className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' id = "btnLogOff">Salir</li>
                     </ul>
                 </div>
             }
