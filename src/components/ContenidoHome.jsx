@@ -18,9 +18,8 @@ const VistaContenidoDvs = () =>{
   },[]);
 
   async function findPosts(){
-    //Buscar publicaciones más recientes de la categoría
-    const cookies = new Cookies();
-    const response2 = await fetch('http://localhost:3001/api/post/category/' + cookies.get("ID_Categoria"),{
+    //Buscar publicaciones más recientes
+    const response2 = await fetch('http://localhost:3001/api/post/',{
       method: "GET",
       headers: {
           "Content-Type": "application/json"

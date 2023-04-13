@@ -1,15 +1,92 @@
 import React from 'react';
 import Rosales from "../images/editar.jpeg";
+import { json, useNavigate } from 'react-router';
+import {Link} from "react-router-dom"
+import { useEffect } from 'react';
+import Cookies from 'universal-cookie';
+import { createContext } from 'react';
 
 const VistaContenidoPerfil = () =>{
+  
+  const navigate = useNavigate();
+  function goToPage(route) {
+      navigate(route);
+    }
+
+  useEffect(()=>{
+    checkSession();
+  },[]);
+
+  async function checkSession(){
+      console.log("Obteniendo datos de usuario cargar información del perfil");
+
+      const cookies = new Cookies();
+      if(cookies.get("ID_Usuario") == "null"){
+          goToPage("/login");
+          return;
+      }
+      const response = await fetch('http://localhost:3001/api/users/' + cookies.get("ID_Usuario"),{
+          method: "GET",
+          headers: {
+              "Content-Type": "application/json"
+          }
+
+      });
+      const status = await response.status; 
+      const user = await response.json();
+
+      if(status == 200){
+          //console.log(user);
+          const txtUsername = document.getElementById("txtUsername");
+          txtUsername.innerHTML = user.username;
+      }
+      else if(status == 404){
+          //alert("Hubo un problema, volviendo al login");
+          goToPage("/login");
+      }
+
+      //Buscar publicaciones del usuario
+      const response2 = await fetch('http://localhost:3001/api/post/user/' + cookies.get("ID_Usuario"),{
+          method: "GET",
+          headers: {
+              "Content-Type": "application/json"
+          }
+      });
+      const status2 = await response2.status; 
+      const posts = await response2.json();
+
+      if(status2 == 200){
+        console.log("Posts del usuario:");
+        console.log((posts));
+        var keyCount  = Object.keys(posts).length;
+        console.log(keyCount);
+
+        const contenedor = document.getElementById("Contenedor");
+        contenedor.innerHTML = "";
+
+        for(var i = 0; i < keyCount; i++){
+         contenedor.innerHTML += '<div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">'
+         + '  <div class="h-80 w-72">'
+         + '    <img class="h-full w-full object-cover" src="http://localhost:3001/api/post/image/' + posts[i].idpublicaciones + '" alt="" />'
+         + '  </div>'
+         + '</div>'
+        }
+
+      }
+      else if(status2 == 404){
+          //alert("Hubo un problema, volviendo al login");
+          goToPage("/login");
+      }
+  }
+
   return(
   <div flex-col items-center justify-center px-9 text-center>
 
     <div className="max-w-sm w-full lg:max-w-full lg:flex justify-center mt-24">
-        <h1 class="font-dmserif text-3xl font-bold text-black">Usuario</h1>
+        <h1 id='txtUsername' class="font-dmserif text-3xl font-bold text-black">Usuario</h1>
     </div>
     <div className="max-w-sm w-full lg:max-w-full lg:flex justify-center mt-15">
-        <button className='font-medium text-base text-[#003142]'>Editar Perfil</button>
+        <button onClick={() => goToPage("/editarperfil")} className='font-medium text-base text-[#003142]'>Editar Perfil</button>
     </div>
     
 
@@ -24,57 +101,8 @@ const VistaContenidoPerfil = () =>{
 <br></br>
     <hr></hr>
 
-      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32">   
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-            <img class="h-full w-full object-cover" src={Rosales} alt="" />
-          </div>
-        </div>
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="" />
-          </div>
-        </div>
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1502675135487-e971002a6adb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="" />
-          </div>
-        </div>
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-          <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" />
-          </div>
-        </div>
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1502675135487-e971002a6adb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="" />
-          </div>
-        </div>
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-          <img class="h-full w-full object-cover" src={Rosales} alt="" />
-          </div>
-        </div>
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="" />
-          </div>
-        </div>
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1502675135487-e971002a6adb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="" />
-          </div>
-        </div>
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-          <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" />
-          </div>
-        </div>
-        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-          <div class="h-80 w-72">
-            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1502675135487-e971002a6adb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="" />
-          </div>
-        </div>
+      <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32">   
+
       </div>
     </div>
   );
