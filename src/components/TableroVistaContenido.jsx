@@ -1,12 +1,10 @@
 import React from 'react';
-import Rosales from "../images/editar.jpeg";
 import { json, useNavigate } from 'react-router';
-import {Link} from "react-router-dom"
 import { useEffect } from 'react';
 import Cookies from 'universal-cookie';
-import { createContext } from 'react';
 
-const VistaContenidoDvs = () =>{
+
+const TableroVistaContenido = () =>{
 
   const navigate = useNavigate();
   function goToPage(route) {
@@ -18,8 +16,9 @@ const VistaContenidoDvs = () =>{
   },[]);
 
   async function findPosts(){
-    //Buscar publicaciones más recientes
-    const response2 = await fetch('http://localhost:3001/api/post/',{
+    //Buscar publicaciones más recientes de la categoría
+    const cookies = new Cookies();
+    const response2 = await fetch('http://localhost:3001/api/post/category/' + cookies.get("ID_Categoria"),{
       method: "GET",
       headers: {
           "Content-Type": "application/json"
@@ -52,7 +51,6 @@ const VistaContenidoDvs = () =>{
   
   return(
   <div>
-    
       <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32">
         
       </div>
@@ -60,4 +58,4 @@ const VistaContenidoDvs = () =>{
   );
 };
 
-export default VistaContenidoDvs
+export default TableroVistaContenido

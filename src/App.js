@@ -12,6 +12,8 @@ import VistaImagen from "./Pages/VistaImagen";
 import VistaDiverso from "./Pages/VistaDiverso";
 import EditarPerfil from "./Pages/EditarPerfil";
 import Perfil from "./Pages/Perfil";
+import Tableros from "./Pages/Tableros";
+import CrearTablero from "./Pages/CrearTablero";
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
           <Route path="/vistadiverso" element={<VistaDiverso/>}></Route>
           <Route path="/editarperfil" element={<EditarPerfil/>}></Route>
           <Route path="/perfil" element={<Perfil/>}></Route>
+          <Route path="/tablero" element={<Tableros/>}></Route>
+          <Route path="/creartablero" element={<CrearTablero/>}></Route>
       </Routes>
       </Router>
     </div>

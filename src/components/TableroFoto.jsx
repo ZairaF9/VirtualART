@@ -5,7 +5,7 @@ import User from "../images/user.png";
 import {Link} from "react-router-dom"
 import { useEffect } from 'react';
 
-const UserMenu = () => {
+const TableroFoto = () => {
 
     const [open, setOpen] = useState(false);
 
@@ -52,7 +52,7 @@ const UserMenu = () => {
                     <ul>
                     <li onClick={() => goToPage("/perfil")} className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' id = "btnProfile">Perfil</li>
                     <li onClick={() => goToPage("/perfil")} className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' id = "btnPost">Mis creaciones</li>
-                    <li onClick={() => goToPage("/tablero")} className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' id = "btnBoard">Mis tableros</li>
+                    <li onClick={() => goToPage("/creartablero")} className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' id = "btnBoard">Mis tableros</li>
                     <li onClick={() => logOff()} className='p-2 text-lg cursor-pointer rounded hover:bg-[#C4E5DC] hover:text-[#218488]' id = "btnLogOff">Salir</li>
                     </ul>
                 </div>
@@ -61,4 +61,4 @@ const UserMenu = () => {
     );
 };
 
-export default UserMenu
+export default TableroFoto
