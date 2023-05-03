@@ -56,7 +56,7 @@ const VistaContenidoDvs = () => {
   return (
     <div>
 
-      <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32">
+      <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32 mt-20">
         {PostList.map(post => (
           <div key={post} class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
             <div class="h-80 w-72">

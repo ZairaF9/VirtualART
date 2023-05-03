@@ -3,7 +3,6 @@ import Register from "./Pages/Register";
 import React from "react";
 import { BrowserRouter as Router,Route,Routes } from "react-router-dom";
 
-
 import Home from "./Pages/Home";
 import CrearPin from "./Pages/CrearPin";
 import EditarPin from "./Pages/EditarPin";
