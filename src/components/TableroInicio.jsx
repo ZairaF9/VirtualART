@@ -16,8 +16,10 @@ const TableroInicio = () =>{
     checkSession();
   },[]);
 
-  function Alert(){
-    alert("di cliiick");
+  function SeeTableroContent(id){
+    const cookies = new Cookies();
+    cookies.set('ID_Tablero', id, { path: '/' });
+    goToPage("/contenidotablero")
   }
 
   async function checkSession(){
@@ -87,7 +89,7 @@ const TableroInicio = () =>{
 
       <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32">   
       {TabList.map(tab => (
-         <div key={tab} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30" onClick={()=>Alert()}>
+         <div key={tab} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30" onClick={()=>SeeTableroContent(tab.idtablero)}>
          <div className="h-80 w-72">
           <img className="h-full w-full object-cover" src={'http://localhost:3001/api/tableros/imgtablero/' + tab.idtablero}  alt=""/>
            </div>

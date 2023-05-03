@@ -14,6 +14,7 @@ import EditarPerfil from "./Pages/EditarPerfil";
 import Perfil from "./Pages/Perfil";
 import Tableros from "./Pages/Tableros";
 import CrearTablero from "./Pages/CrearTablero";
+import TableroVistaContenido from "./components/TableroVistaContenido";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/perfil" element={<Perfil/>}></Route>
           <Route path="/tablero" element={<Tableros/>}></Route>
           <Route path="/creartablero" element={<CrearTablero/>}></Route>
+          <Route path="/contenidotablero" element={<TableroVistaContenido/>}></Route>
       </Routes>
       </Router>
     </div>

@@ -2,60 +2,47 @@ import React from 'react';
 import { json, useNavigate } from 'react-router';
 import { useEffect } from 'react';
 import Cookies from 'universal-cookie';
+import Flores from '../images/flores.jpeg'
+import Navbar from './Navbar';
 
 
 const TableroVistaContenido = () =>{
 
-  const navigate = useNavigate();
-  function goToPage(route) {
-      navigate(route);
-    }
-
   useEffect(()=>{
-    findPosts();
+    findTablero();
   },[]);
 
-  async function findPosts(){
-    //Buscar publicaciones más recientes de la categoría
+async function findTablero(){
     const cookies = new Cookies();
-    const response2 = await fetch('http://localhost:3001/api/post/category/' + cookies.get("ID_Categoria"),{
+    const response = await fetch('http://localhost:3001/api/tableros/' + cookies.get("ID_Tablero") ,{
       method: "GET",
       headers: {
           "Content-Type": "application/json"
       }
     });
-    const status2 = await response2.status; 
-    const posts = await response2.json();
+    const tablero = await response.json();
 
-    if(status2 == 200){
-    var keyCount  = Object.keys(posts).length;
-    console.log(keyCount);
+    console.log(tablero);
+    const imageControl=document.getElementById("coverImage");
+    imageControl.src='http://localhost:3001/api/tableros/imgtablero/' + cookies.get("ID_Tablero");
 
-    const contenedor = document.getElementById("Contenedor");
-    contenedor.innerHTML = "";
+    const title=document.getElementById("title");
+    title.innerHTML=tablero.nombre;
+}
 
-    for(var i = 0; i < keyCount; i++){
-    contenedor.innerHTML += '<div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">'
-    + '  <div class="h-80 w-72">'
-    + '    <img class="h-full w-full object-cover" src="http://localhost:3001/api/post/image/' + posts[i].idpublicaciones + '" alt="" />'
-    + '  </div>'
-    + '</div>'
-    }
-
-    }
-    else if(status2 == 404){
-      //alert("Hubo un problema, volviendo al login");
-      goToPage("/login");
-    }
-  }
-  
-  return(
-  <div>
-      <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32">
-        
-      </div>
+return(
+    <div>
+        <Navbar/>
+    <div class="group relative items-center justify-center overflow-hidden ">
+    <img id='coverImage' className='w-full h-80 object-cover' src={Flores}/>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+          <h1 id='title' class="font-dmserif text-3xl font-bold text-white">Naturaleza</h1>
+        </div>
     </div>
-  );
+    <h1>Holaaaa</h1>
+    </div>
+);
 };
 
 export default TableroVistaContenido
