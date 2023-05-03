@@ -1,9 +1,11 @@
-import React from 'react';
+import {React,useState} from 'react';
 import { json, useNavigate } from 'react-router';
 import { useEffect } from 'react';
 import Cookies from 'universal-cookie';
 
 const TableroInicio = () =>{
+
+  const [TabList,setTabList] = useState([]);
 
   const navigate = useNavigate();
   function goToPage(route) {
@@ -13,6 +15,10 @@ const TableroInicio = () =>{
   useEffect(()=>{
     checkSession();
   },[]);
+
+  function Alert(){
+    alert("di cliiick");
+  }
 
   async function checkSession(){
       console.log("Obteniendo datos de usuario cargar información del perfil");
@@ -31,24 +37,30 @@ const TableroInicio = () =>{
           }
       });
       const status2 = await response2.status; 
-      const tableros = await response2.json();
+     const tableros = await response2.json();
+      setTabList(tableros);
 
       if(status2 == 200){
         console.log("Tableros del usuario:");
-        console.log((tableros));
-        var keyCount  = Object.keys(tableros).length;
-        console.log(keyCount);
+        //console.log((tableros));
+        //var keyCount  = Object.keys(tableros).length;
+       // console.log(keyCount);
+        console.log("tableros:" + setTabList);
 
-        const contenedor = document.getElementById("Contenedor");
+        /*const contenedor = document.getElementById("Contenedor");
         contenedor.innerHTML = "";
 
         for(var i = 0; i < keyCount; i++){
-         contenedor.innerHTML += '<div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">'
+         contenedor.innerHTML += '<div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30" '+ onClick = {() => Alert()} +'>'
          + '  <div class="h-80 w-72">'
          + '    <img class="h-full w-full object-cover" src="http://localhost:3001/api/tableros/imgtablero/' + tableros[i].idtablero + '" alt=""/>'
          + '  </div>'
+         + ' <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-teal-800/70 group-hover:via-teal-800/60 group-hover:to-teal-800/70"></div>'
+         + ' <div class="absolute inset-0 flex  flex-col items-center justify-center px-9 text-center ">'
+         + ' <h1 class="font-dmserif text-3xl font-bold text-white">'+ tableros[i].nombre +'</h1>'
+         + ' </div>'
          + '</div>'
-        }
+        }*/
 
       }
       else if(status2 == 404){
@@ -74,7 +86,18 @@ const TableroInicio = () =>{
     <hr></hr>
 
       <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32">   
-
+      {TabList.map(tab => (
+         <div key={tab} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30" onClick={()=>Alert()}>
+         <div className="h-80 w-72">
+          <img className="h-full w-full object-cover" src={'http://localhost:3001/api/tableros/imgtablero/' + tab.idtablero}  alt=""/>
+           </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-teal-800/70 group-hover:via-teal-800/60 group-hover:to-teal-800/70"></div>
+          <div className="absolute inset-0 flex  flex-col items-center justify-center px-9 text-center ">
+           <h1 className="font-dmserif text-3xl font-bold text-white">{tab.nombre}</h1>
+           </div>
+          </div>
+         
+         ))}
       </div>
     </div>
     );
