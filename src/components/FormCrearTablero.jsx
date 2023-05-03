@@ -1,8 +1,6 @@
 import React from "react";
 import { json, useNavigate } from 'react-router';
-import {Link} from "react-router-dom"
 import Cookies from 'universal-cookie';
-import Navbar from './Navbar';
 
 const FormCrearTablero = () =>{
 
