@@ -31,7 +31,7 @@ const TableroInicio = () =>{
           return;
       }
 
-      //Buscar publicaciones del usuario
+      //Buscar tableros del usuario
       const response2 = await fetch('http://localhost:3001/api/tableros/user/' + cookies.get("ID_Usuario"),{
           method: "GET",
           headers: {

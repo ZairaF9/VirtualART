@@ -39,7 +39,7 @@ const FormCrearTablero = () =>{
 
     async function createTablero(){
         const txtTitulo=document.getElementById("titulo");
-        const cbPrivacidad=document.getElementById("privacidad");
+       // const cbPrivacidad=document.getElementById("privacidad");
        
 
         if(txtTitulo.value==""){
@@ -47,16 +47,23 @@ const FormCrearTablero = () =>{
             return;
         }
 
-        if(cbPrivacidad.checked == true){
+       /* if(cbPrivacidad.checked == true){
            cbPrivacidad.value = 1;
             return;
         }else{
             cbPrivacidad.value = 0;
         }
+        
+        react
+        <div className='mt-8'>
+                <input id="privacidad" name="privacidad" className='text-lg font-medium' type="checkbox"/> Mantener mi tablero como privado
+                </div>
+        
+        */
 
         const cookies = new Cookies();
 
-        const bodyFetch = {title: txtTitulo.value, privacity: cbPrivacidad.value, user: cookies.get("ID_Usuario")};
+        const bodyFetch = {title: txtTitulo.value, privacity: 0, user: cookies.get("ID_Usuario")};
 
         const response = await fetch('http://localhost:3001/api/tableros/create',{
             method: "POST",
@@ -103,9 +110,7 @@ return (
                 <div className="mt-5">
                 <input onChange={() => changePic()} type="file" id="imgtablero" name="imgtablero"  accept="image/png, image/jpeg"></input>
                 </div>
-                <div className='mt-8'>
-                <input id="privacidad" name="privacidad" className='text-lg font-medium' type="checkbox"/> Mantener mi tablero como privado
-                </div>
+                
                
             </div>
         </div>

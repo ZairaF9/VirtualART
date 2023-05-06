@@ -19,6 +19,12 @@ const VistaContenidoDvs = () => {
     findPosts();
   }, []);
 
+  function ViewPost(id){
+    const cookies = new Cookies();
+    cookies.set('ID_Post', id, { path: '/' });
+    goToPage("/vistapin")
+  }
+
   async function findPosts() {
     //Buscar publicaciones más recientes
     const response2 = await fetch('http://localhost:3001/api/post/', {
@@ -58,7 +64,7 @@ const VistaContenidoDvs = () => {
 
       <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32 mt-20">
         {PostList.map(post => (
-          <div key={post} class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+          <div key={post} class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30" onClick={()=> ViewPost(post.idpublicaciones)}>
             <div class="h-80 w-72">
               <img class="h-full w-full object-cover" src={'http://localhost:3001/api/post/image/' + post.idpublicaciones}  alt="" />
             </div>

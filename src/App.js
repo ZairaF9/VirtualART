@@ -14,6 +14,7 @@ import Perfil from "./Pages/Perfil";
 import Tableros from "./Pages/Tableros";
 import CrearTablero from "./Pages/CrearTablero";
 import TableroVistaContenido from "./components/TableroVistaContenido";
+import PostTableros from "./Pages/PostTableros";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/tablero" element={<Tableros/>}></Route>
           <Route path="/creartablero" element={<CrearTablero/>}></Route>
           <Route path="/contenidotablero" element={<TableroVistaContenido/>}></Route>
+          <Route path="/posttableros" element={<PostTableros/>}></Route>
       </Routes>
       </Router>
     </div>

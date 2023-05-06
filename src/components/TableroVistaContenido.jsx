@@ -1,6 +1,6 @@
 import React from 'react';
 import { json, useNavigate } from 'react-router';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import Cookies from 'universal-cookie';
 import Flores from '../images/flores.jpeg'
 import Navbar from './Navbar';
@@ -9,10 +9,10 @@ import Navbar from './Navbar';
 const TableroVistaContenido = () =>{
 
   useEffect(()=>{
-    findTablero();
+    findPostTablero();
   },[]);
 
-async function findTablero(){
+async function findPostTablero(){
     const cookies = new Cookies();
     const response = await fetch('http://localhost:3001/api/tableros/' + cookies.get("ID_Tablero") ,{
       method: "GET",
@@ -29,6 +29,7 @@ async function findTablero(){
     const title=document.getElementById("title");
     title.innerHTML=tablero.nombre;
 }
+
 
 return(
     <div>
