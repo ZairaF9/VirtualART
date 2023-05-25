@@ -83,13 +83,13 @@ const TableroVistaContenido = () => {
         "Content-Type": "application/json"
       }
     });
-    
+
     const tablero = await response2.json();
     const status = await response2.status;
 
     if (status == 200) {
     
-      console.log("se elimino el tablero correctamente");
+     alert("se elimino el tablero correctamente");
       goToPage("/home");
 
     }
