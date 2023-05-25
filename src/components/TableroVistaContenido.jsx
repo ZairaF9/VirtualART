@@ -67,6 +67,37 @@ const TableroVistaContenido = () => {
     goToPage("/editartablero");
   }
 
+  async function EliminarTablero(){
+    const cookies = new Cookies();
+
+    const response = await fetch('http://localhost:3001/api/posttablero/' + cookies.get("ID_Tablero"), {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const response2 = await fetch('http://localhost:3001/api/tableros/' + cookies.get("ID_Tablero"), {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    
+    const tablero = await response2.json();
+    const status = await response2.status;
+
+    if (status == 200) {
+    
+      console.log("se elimino el tablero correctamente");
+      goToPage("/home");
+
+    }
+    else if (status == 404) {
+      //alert("Hubo un problema, volviendo al login");
+      goToPage("/login");
+    }
+  }
 
   return (
     <div>
@@ -83,7 +114,7 @@ const TableroVistaContenido = () => {
                     transition-all py-3 rounded-xl bg-[#46c5b0] text-white text-lg font-bold' type='button' onClick={ () => EditTablero() }>Editar Tablero</button>
                     
         <button className=' mx-5 active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out hover:bg-[#723a15] 
-                    transition-all py-3 rounded-xl bg-[#dfa373] text-white text-lg font-bold' type='button'>Eliminar Tablero</button>
+                    transition-all py-3 rounded-xl bg-[#dfa373] text-white text-lg font-bold' type='button' onClick={ () => EliminarTablero() }>Eliminar Tablero</button>
         </div>
       <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32">
         {PostTabList.map(tab => (
