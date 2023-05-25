@@ -55,7 +55,7 @@ const FormEditarTablero = () =>{
         console.log(status);
 
         if(status == 200){
-            alert("Tablero modificado exitosamente");
+            swal("Muy Bien!", "Se ha modificado el tablero exitosamente", "success");
             goToPage("/home");
         }
         else if(status == 500){
