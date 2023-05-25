@@ -55,7 +55,7 @@ const FormEditarTablero = () =>{
 
         if(status == 200){
             alert("Tablero modificado exitosamente");
-            goToPage("/home")
+            goToPage("/home");
         }
         else if(status == 500){
             alert("Ocurrió un problema durante la modificacion del tablero");
