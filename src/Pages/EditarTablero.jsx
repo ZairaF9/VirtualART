@@ -13,13 +13,12 @@ const FormEditarTablero = () =>{
     }
 
     const changePic = async () => {
-
         //Subir foto al servidor
         console.log("Subiendo imagen");
         var form = document.getElementById("FormEdittablero");
         var formData = new FormData(form);
 
-        const response = await fetch('http://localhost:3001/api/tableros/imgtablero',{
+        const response = await fetch('http://localhost:3001/api/tableros/imgtablero', {
             method: "POST",
             body: formData,
         });
