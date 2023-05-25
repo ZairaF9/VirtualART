@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Cookies from 'universal-cookie';
 import Flores from '../images/flores.jpeg'
 import Navbar from './Navbar';
+import swal from 'sweetalert';
 
 
 const TableroVistaContenido = () => {
@@ -89,7 +90,7 @@ const TableroVistaContenido = () => {
 
     if (status == 200) {
     
-     alert("se elimino el tablero correctamente");
+      swal("Muy Bien!", "Se elimino correctamente el tablero", "success");
       goToPage("/home");
 
     }
