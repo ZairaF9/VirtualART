@@ -15,6 +15,7 @@ import Tableros from "./Pages/Tableros";
 import CrearTablero from "./Pages/CrearTablero";
 import TableroVistaContenido from "./components/TableroVistaContenido";
 import PostTableros from "./Pages/PostTableros";
+import FormEditarTablero from "./Pages/EditarTablero";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/creartablero" element={<CrearTablero/>}></Route>
           <Route path="/contenidotablero" element={<TableroVistaContenido/>}></Route>
           <Route path="/posttableros" element={<PostTableros/>}></Route>
+          <Route path="/editartablero" element={<FormEditarTablero/>}></Route>
       </Routes>
       </Router>
     </div>
