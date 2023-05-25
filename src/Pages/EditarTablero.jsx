@@ -2,6 +2,7 @@ import React from "react";
 import { json, useNavigate } from 'react-router';
 import Cookies from 'universal-cookie';
 import Navbar from '../components/Navbar';
+import swal from "sweetalert";
 
 const FormEditarTablero = () =>{
 
@@ -31,7 +32,7 @@ const FormEditarTablero = () =>{
        
 
         if(txtTitulo.value==""){
-            alert("Debes escribir un título");
+            swal("Debes escribir un título");
             return;
         }
 
