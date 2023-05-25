@@ -13,6 +13,7 @@ const FormEditarTablero = () =>{
     }
 
     const changePic = async () => {
+
         //Subir foto al servidor
         console.log("Subiendo imagen");
         var form = document.getElementById("FormEdittablero");
@@ -32,7 +33,7 @@ const FormEditarTablero = () =>{
        
 
         if(txtTitulo.value==""){
-            swal("Debes escribir un título");
+            swal("Alerta!", "Debe escribir un titulo", "warning");
             return;
         }
 

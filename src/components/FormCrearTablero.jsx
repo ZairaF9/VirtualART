@@ -1,6 +1,7 @@
 import React from "react";
 import { json, useNavigate } from 'react-router';
 import Cookies from 'universal-cookie';
+import swal from "sweetalert";
 
 const FormCrearTablero = () =>{
 
@@ -43,7 +44,7 @@ const FormCrearTablero = () =>{
        
 
         if(txtTitulo.value==""){
-            alert("Debes escribir un título");
+            swal("Alerta!", "Debe escribir un titulo", "warning");
             return;
         }
 
@@ -65,7 +66,7 @@ const FormCrearTablero = () =>{
 
         const bodyFetch = {title: txtTitulo.value, privacity: 0, user: cookies.get("ID_Usuario")};
 
-        const response = await fetch('http://localhost:3001/api/tableros/create',{
+        const response = await fetch('http://localhost:3001/api/tableros',{
             method: "POST",
             body: JSON.stringify(bodyFetch),
             headers: {
@@ -80,8 +81,8 @@ const FormCrearTablero = () =>{
         console.log(status);
 
         if(status == 200){
-            alert("Tablero creado exitosamente");
-            goToPage("/tablero")
+            swal("Muy Bien!", "Se ha creado el tablero exitosamente", "success");
+            goToPage("/tablero");
         }
         else if(status == 500){
             alert("Ocurrió un problema durante la creación del tablero");
