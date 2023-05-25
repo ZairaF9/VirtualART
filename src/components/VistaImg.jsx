@@ -45,7 +45,6 @@ async function findPost(){
 function SavePostTablero(){
   const post = document.getElementById("postID");
   const postid = parseInt(post.value);
-alert("cliiick");
   const cookies = new Cookies();
   cookies.set('ID_Post',postid, { path: '/' });
   goToPage("/posttableros")
