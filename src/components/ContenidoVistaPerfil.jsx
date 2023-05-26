@@ -144,6 +144,7 @@ const VistaContenidoPerfil = () =>{
     <h1>&nbsp; &nbsp; </h1>
 
     <button className='font-medium text-base text-[#003142] align=left'onClick={() => getSavedPost()}>Guardados</button>
+    
     </span>
 
 <br></br>

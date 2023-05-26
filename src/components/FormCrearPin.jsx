@@ -4,6 +4,7 @@ import { json, useNavigate } from 'react-router';
 import {Link} from "react-router-dom"
 import { useEffect } from 'react';
 import Cookies from 'universal-cookie';
+import swal from 'sweetalert';
 
 const FormCrearPin = () => {
 
@@ -133,11 +134,11 @@ const FormCrearPin = () => {
         console.log(status);
 
         if(status == 200){
-            alert("Publicación creada exitosamente");
+            swal("Muy Bien!", "Se ha creado la publicacion exitosamente", "success");
            goToPage("/perfil")
         }
         else if(status == 500){
-            alert("Ocurrió un problema durante la creación de la publicación");
+            swal("Alerta!", "No se pudo crear la publicacion", "warning");
         }
 
         //const status = await response.status;
