@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import Subir from "../images/subir.png";
 import { json, useNavigate } from 'react-router';
 import {Link} from "react-router-dom"
@@ -10,6 +10,18 @@ const FormCrearPin = () => {
     const navigate = useNavigate();
     function goToPage(route) {
         navigate(route);
+    }
+
+    const [PinPic, setPinPic] = useState(["asd"]);
+
+    async function LoadUserPic(id){
+        setPinPic("Hola");
+        const cookies = new Cookies();
+        var img = await fetch("http://localhost:3001/api/post/image/" + id,{
+            method: "GET"
+        });
+        
+        setPinPic("http://localhost:3001/api/post/image/" + id);
     }
 
 
@@ -52,6 +64,7 @@ const FormCrearPin = () => {
             //alert("Hubo un problema, volviendo al login");
             goToPage("/home");
         }
+        setPinPic(Subir);
     }
 
     const changePic = async () => {
@@ -80,9 +93,7 @@ const FormCrearPin = () => {
         console.log(response);
         console.log("llamé la api");
 
-        const image = document.getElementById("imageControlPost");
-        image.src="";
-        image.src = "http://localhost:3001/api/post/image/" + id.value;
+        LoadUserPic(id.value);
     };
     
     async function createPost(){
@@ -136,7 +147,7 @@ const FormCrearPin = () => {
         <form id='formPublicacion'>
             <div className="max-w-sm w-full h-[480px] lg:max-w-full lg:flex justify-center mt-24">
             <input type='hidden' id='postID' name='postID' style={{visibility:false}}></input>
-                <img id='imageControlPost' src={Subir} className='h-48 lg:h-auto lg:w-150 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden'/>
+                <img id='imageControlPost' src={PinPic} className='h-48 lg:h-auto lg:w-150 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden'/>
                 <div className="lg:border-l-0 lg:border-b-8 w-[800px] lg:border-[#C4E5DC] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <div className="mb-8">
                     <input type="file" id="image" name="image" onChange={() => changePic()} accept="image/png, image/jpeg"></input>

@@ -26,36 +26,50 @@ const VistaContenidoDvs = () => {
   }
 
   async function findPosts() {
-    //Buscar publicaciones más recientes
-    const response2 = await fetch('http://localhost:3001/api/post/', {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
+    const cookies = new Cookies();
+    if(cookies.get("Búsqueda") == ""){ //Carga post normalmente
+      //Buscar publicaciones más recientes
+      const response2 = await fetch('http://localhost:3001/api/post/', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      const status2 = await response2.status;
+      const posts = await response2.json();
+      setPostList(posts);
+
+      if (status2 == 200) {
+        /* var keyCount  = Object.keys(posts).length;
+        console.log(keyCount);
+    
+        const contenedor = document.getElementById("Contenedor");
+        contenedor.innerHTML = "";
+    
+        for(var i = 0; i < keyCount; i++){
+        contenedor.innerHTML += '<div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">'
+        + '  <div class="h-80 w-72">'
+        + '    <img class="h-full w-full object-cover" src="http://localhost:3001/api/post/image/' + posts[i].idpublicaciones + '" alt="" />'
+        + '  </div>'
+        + '</div>'
+        }*/
+
       }
-    });
-    const status2 = await response2.status;
-    const posts = await response2.json();
-    setPostList(posts);
-
-    if (status2 == 200) {
-      /* var keyCount  = Object.keys(posts).length;
-       console.log(keyCount);
-   
-       const contenedor = document.getElementById("Contenedor");
-       contenedor.innerHTML = "";
-   
-       for(var i = 0; i < keyCount; i++){
-       contenedor.innerHTML += '<div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">'
-       + '  <div class="h-80 w-72">'
-       + '    <img class="h-full w-full object-cover" src="http://localhost:3001/api/post/image/' + posts[i].idpublicaciones + '" alt="" />'
-       + '  </div>'
-       + '</div>'
-       }*/
-
+      else if (status2 == 404) {
+        //alert("Hubo un problema, volviendo al login");
+        goToPage("/login");
+      }
     }
-    else if (status2 == 404) {
-      //alert("Hubo un problema, volviendo al login");
-      goToPage("/login");
+    else{ //Realiza la búsqueda
+      const response2 = await fetch('http://localhost:3001/api/post/search/' + cookies.get("Búsqueda"), {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      const status2 = await response2.status;
+      const posts = await response2.json();
+      setPostList(posts);
     }
   }
 

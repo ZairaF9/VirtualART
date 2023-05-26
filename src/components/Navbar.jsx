@@ -13,6 +13,12 @@ const Navbar = () => {
         navigate("/login");
       }
 
+      function goToHome() {
+        const cookies = new Cookies();
+        cookies.set('Búsqueda', "", { path: '/' });
+        navigate("/home");
+      }
+
     useEffect(()=>{
         checkSession();
     },[]);
@@ -57,7 +63,7 @@ const Navbar = () => {
                 <div className="flex items-center space-x-5 text-md">
                     <ul className="flex space-x-10 text-gray-50 font-medium">
                     <li>
-                            <a href="#" className='hover:text-[#2bc5a4]'><Link to="/home">Inicio</Link></a>
+                            <a href="#" className='hover:text-[#2bc5a4]' onClick={()=>goToHome()}>Inicio</a>
                         </li>
                         <li>
                             <a href="#" className='hover:text-[#2bc5a4]'><Link to="/diverso">Diverso</Link></a>

@@ -72,6 +72,8 @@ const FormLogin = () => {
 
         if(status == 200){
             //alert("Bienvenido");
+            const cookies = new Cookies();
+            cookies.set('Búsqueda', "", { path: '/' });
             goToHome();
         }
         else if(status == 404){

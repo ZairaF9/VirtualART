@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import { React, useState } from 'react';
 import User from "../images/user.png";
 import {Link} from "react-router-dom"
 import { json, useNavigate } from 'react-router';
@@ -11,6 +11,18 @@ var FormPerfil = () => {
     const navigate = useNavigate();
     function goToPage(route) {
         navigate(route);
+    }
+
+    const [UserPic, setUserPic] = useState(["asd"]);
+
+    async function LoadUserPic(){
+        setUserPic("Hola");
+        const cookies = new Cookies();
+        var img = await fetch("http://localhost:3001/api/users/avatar/" + cookies.get("ID_Usuario"),{
+            method: "GET"
+        });
+        
+        setUserPic("http://localhost:3001/api/users/avatar/" + cookies.get("ID_Usuario"));
     }
 
     useEffect(()=>{
@@ -27,9 +39,6 @@ var FormPerfil = () => {
         }
         const userID = document.getElementById("userID");
         userID.value = cookies.get("ID_Usuario");
-
-        const image = document.getElementById("imageControlProfile");
-        image.src = "http://localhost:3001/api/users/avatar/" + cookies.get("ID_Usuario");
 
         const response = await fetch('http://localhost:3001/api/users/' + cookies.get("ID_Usuario"),{
             method: "GET",
@@ -48,6 +57,7 @@ var FormPerfil = () => {
             //alert("Hubo un problema, volviendo al login");
             goToPage("/login");
         }
+        LoadUserPic();
     }
     
     const changePic = async () => {
@@ -64,15 +74,21 @@ var FormPerfil = () => {
         console.log("llamé la api");
 
         const cookies = new Cookies();
-        const image = document.getElementById("imageControlProfile");
-        image.src = "http://localhost:3001/api/users/avatar/" + cookies.get("ID_Usuario");
+        LoadUserPic();
         const image2 = document.getElementById("imageControl");
         image2.src = "http://localhost:3001/api/users/avatar/" + cookies.get("ID_Usuario");
-        this.forceUpdate();
-    };
+    }
 
     const updateProfile = async ()=>{
-        var userAux = userOBJ;
+        const cookies = new Cookies();
+        const response2 = await fetch('http://localhost:3001/api/users/' + cookies.get("ID_Usuario"),{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+
+        }); 
+        var userAux = await response2.json();
         console.log(userAux);
         //Guardar datos en la base de datos
         const usernametxt = document.getElementById("username");
@@ -100,9 +116,6 @@ var FormPerfil = () => {
         console.log(userAux);
 
         const bodyFetch = {username: userAux.username, password: userAux.userpassword, email: userAux.email};
-
-        const cookies = new Cookies();
-
         const response = await fetch('http://localhost:3001/api/users/' + cookies.get("ID_Usuario"),{
             method: "PUT",
             body: JSON.stringify(bodyFetch),
@@ -122,14 +135,14 @@ var FormPerfil = () => {
         else if(status == 500){
             alert("Ocurrió un problema durante la modificación de la cuenta");
         }
-    };
+    }
 
     return (
         <div className='w-96 m-40 text-left'>
             <form id='formModProfile' className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4' encType='multipart/form-data'>
                 <input type='hidden' id='userID' name='userID' style={{visibility:false}}></input>
                 <div className="max-w-sm w-full lg:max-w-full lg:flex justify-center mt-24">
-                    <img id='imageControlProfile' src={User} className="h-40 w-40 object-cover border-2 border-[#2794b8] rounded-full cursor-pointer" />
+                    <img id='imageControlProfile' src={UserPic} className="h-40 w-40 object-cover border-2 border-[#2794b8] rounded-full cursor-pointer" />
                 </div>
                 <br></br>
                 <input type="file" id="avatar" name="avatar" onChange={() => changePic()} accept="image/png, image/jpeg"></input>
