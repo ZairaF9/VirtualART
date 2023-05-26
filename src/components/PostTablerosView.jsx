@@ -2,6 +2,7 @@ import React from 'react';
 import { json, useNavigate } from 'react-router';
 import { useEffect,useState } from 'react';
 import Cookies from 'universal-cookie';
+import swal from "sweetalert";
 
 const  PostTablerosView = () =>{
 
@@ -45,9 +46,6 @@ const  PostTablerosView = () =>{
     async function SavePostInTablero(id){
         const postid=document.getElementById("postID");
 
-        alert("cliick"+ postid.value + id);
-
-      
         const bodyFetch = {idtablero: id, idpublicacion: postid.value};
 
         const response = await fetch('http://localhost:3001/api/posttablero/create',{
@@ -65,7 +63,7 @@ const  PostTablerosView = () =>{
         console.log(status);
 
         if(status == 200){
-            alert("Publicacion agregada exitosamente al tablero");
+            swal("Muy Bien!", "Publicacion agregada exitosamente al tablero", "success");
             goToPage("/home")
         }
         else if(status == 500){

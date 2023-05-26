@@ -1,6 +1,7 @@
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import React from "react";
+import swal from "sweetalert";
 import { BrowserRouter as Router,Route,Routes } from "react-router-dom";
 
 import Home from "./Pages/Home";
@@ -15,6 +16,7 @@ import Tableros from "./Pages/Tableros";
 import CrearTablero from "./Pages/CrearTablero";
 import TableroVistaContenido from "./components/TableroVistaContenido";
 import PostTableros from "./Pages/PostTableros";
+import FormEditarTablero from "./Pages/EditarTablero";
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
           <Route path="/creartablero" element={<CrearTablero/>}></Route>
           <Route path="/contenidotablero" element={<TableroVistaContenido/>}></Route>
           <Route path="/posttableros" element={<PostTableros/>}></Route>
+          <Route path="/editartablero" element={<FormEditarTablero/>}></Route>
       </Routes>
       </Router>
     </div>

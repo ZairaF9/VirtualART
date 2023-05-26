@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Cookies from 'universal-cookie';
 import Flores from '../images/flores.jpeg'
 import Navbar from './Navbar';
+import swal from 'sweetalert';
 
 
 const TableroVistaContenido = () => {
@@ -61,6 +62,89 @@ const TableroVistaContenido = () => {
     }
   }
 
+  async function EditTablero(){
+    const cookies = new Cookies();
+    cookies.get("ID_Tablero",{ path: '/' });
+    goToPage("/editartablero");
+  }
+
+  async function EliminarTablero(){
+    const cookies = new Cookies();
+
+    const response = await fetch('http://localhost:3001/api/posttablero/' + cookies.get("ID_Tablero"), {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const response2 = await fetch('http://localhost:3001/api/tableros/' + cookies.get("ID_Tablero"), {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const tablero = await response2.json();
+    const status = await response2.status;
+
+    if (status == 200) {
+    
+      swal("Muy Bien!", "Se elimino correctamente el tablero", "success");
+      goToPage("/home");
+
+    }
+    else if (status == 404) {
+      //alert("Hubo un problema, volviendo al login");
+      goToPage("/login");
+    }
+  }
+
+  async function EliminarPostdeTablero(id){
+
+    swal({
+      title: "Estas Seguro?",
+      text: "Al eliminar no podrás recuperar la publicacion guardada!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("La publicacion ha sido quitada del tablero", {
+          icon: "success",
+        });
+
+       EliminarPostJSON(id);
+        
+      } else {
+        swal("Se ha cancelado");
+      }
+    });
+
+
+  }
+
+  async function EliminarPostJSON(id){
+    const response = await fetch('http://localhost:3001/api/posttablero/publi/' + id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      const status = await response.status;
+      if (status == 200) {
+  
+        swal("Muy Bien!", "Se elimino correctamente la publicacion en el tablero", "success");
+        goToPage("/home");
+  
+      }
+      else if (status == 404) {
+        //alert("Hubo un problema, volviendo al login");
+        goToPage("/login");
+      }
+  }
 
   return (
     <div>
@@ -72,9 +156,16 @@ const TableroVistaContenido = () => {
           <h1 id='title' class="font-dmserif text-3xl font-bold text-white">Naturaleza</h1>
         </div>
       </div>
+      <div>
+        <button className=' active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out hover:bg-[#15725e] 
+                    transition-all py-3 rounded-xl bg-[#46c5b0] text-white text-lg font-bold' type='button' onClick={ () => EditTablero() }>Editar Tablero</button>
+                    
+        <button className=' mx-5 active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out hover:bg-[#723a15] 
+                    transition-all py-3 rounded-xl bg-[#dfa373] text-white text-lg font-bold' type='button' onClick={ () => EliminarTablero() }>Eliminar Tablero</button>
+        </div>
       <div id='Contenedor' class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5 px-12 pt-32">
         {PostTabList.map(tab => (
-          <div key={tab} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+          <div key={tab} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30" onClick={() => EliminarPostdeTablero(tab.idpublicaciones)}>
             <div className="h-80 w-72">
               <img className="h-full w-full object-cover" src={'http://localhost:3001/api/post/image/' + tab.idpublicaciones} alt="" />
             </div>
