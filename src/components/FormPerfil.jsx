@@ -4,6 +4,7 @@ import {Link} from "react-router-dom"
 import { json, useNavigate } from 'react-router';
 import { useEffect } from 'react';
 import Cookies from 'universal-cookie';
+import swal from 'sweetalert';
 
 var FormPerfil = () => {
     var userOBJ = null;
@@ -129,7 +130,8 @@ var FormPerfil = () => {
         console.log(status);
 
         if(status == 200){
-            alert("Usuario modificado exitosamente");
+           // alert("Usuario modificado exitosamente");
+            swal("Muy Bien!", "Usuario modificado exitosamente", "success");
             goToPage("/perfil");
         }
         else if(status == 500){

@@ -2,6 +2,7 @@ import {React,useState} from 'react';
 import { json, useNavigate } from 'react-router';
 import { Link } from "react-router-dom"
 import { AiFillEyeInvisible, AiFillEye, AiOutlineConsoleSql } from "react-icons/ai"
+import swal from 'sweetalert';
 
 const FormRegister = () => {
 
@@ -70,7 +71,7 @@ const FormRegister = () => {
         console.log(status);
 
         if(status == 200){
-            alert("Usuario creado exitosamente");
+            swal("Muy Bien!", "Usuario creado exitosamente", "success");
             goToLogin();
         }
         else if(status == 500){

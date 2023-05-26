@@ -12,20 +12,6 @@ const FormEditarTablero = () =>{
         navigate(route);
     }
 
-    const changePic = async () => {
-        //Subir foto al servidor
-        console.log("Subiendo imagen");
-        var form = document.getElementById("FormEdittablero");
-        var formData = new FormData(form);
-
-        const response = await fetch('http://localhost:3001/api/tableros/imgtablero', {
-            method: "POST",
-            body: formData,
-        });
-        console.log(response);
-        console.log("llamé la api");
-    };
-
     async function EditarTablero(){
         const txtTitulo=document.getElementById("titulo");
        // const cbPrivacidad=document.getElementById("privacidad");

@@ -5,6 +5,7 @@ import Rosa from "../images/rosas.jpg";
 import User from "../images/user.png";
 import User2 from "../images/user2.png";
 import Cookies from 'universal-cookie';
+import swal from 'sweetalert';
 
 
 const VistaImg = () =>{
@@ -156,6 +157,7 @@ async function savePost(){
 
         if(status == 200){
           console.log("Guardé el post");
+          swal("Muy Bien!", "Se ha guardado la publicacion exitosamente", "success");
         }
 }
 

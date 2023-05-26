@@ -3,7 +3,7 @@ import FormEditarPin from '../components/FormEditarPin';
 import Navbar from '../components/Navbar';
 
 
-const CrearPin = () =>{
+const EditarPin = () =>{
     return(
         <div>
            <Navbar/>
@@ -12,4 +12,4 @@ const CrearPin = () =>{
     );
 };
 
-export default CrearPin
+export default EditarPin

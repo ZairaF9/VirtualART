@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai";
 import { useEffect } from 'react';
 import Cookies from 'universal-cookie';
+import swal from 'sweetalert';
 
 const FormLogin = () => {
 
@@ -35,15 +36,18 @@ const FormLogin = () => {
         var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
         if(emailtxt.value==""){
-            alert("Ingresa un email");
+            //alert("Ingresa un email");
+            swal("Alerta!", "Ingresa un email", "warning");
             return;
         }
         else if (!emailRegex.test(emailtxt.value)) {
-            alert("Formato de correo no válido");
+            //alert("Formato de correo no válido");
+            swal("Alerta!", "Formato de correo no válido", "warning");
             return false;
         }
         else if(passwordtxt.value==""){
-            alert("Ingresa una contraseña");
+            //alert("Ingresa una contraseña");
+            swal("Alerta!", "Ingresa una contraseña", "warning");
             return;
         }
 
@@ -77,10 +81,12 @@ const FormLogin = () => {
             goToHome();
         }
         else if(status == 404){
-            alert("El usuario no existe");
+           // alert("El usuario no existe");
+            swal("Alerta!", "El usuario no existe", "warning");
         }
         else if(status == 401){
-            alert("La contraseña es incorrecta");
+            //alert("La contraseña es incorrecta");
+            swal("Alerta!", "La contraseña es incorrecta", "warning");
         }
     };
 

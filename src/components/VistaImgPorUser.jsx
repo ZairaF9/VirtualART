@@ -135,6 +135,12 @@ async function FunEliminarJSON(){
     }
 }
 
+async function ModificarPost(){
+  const cookies = new Cookies();
+  cookies.get("ID_Post",{ path: '/' });
+  goToPage("/editarpin");
+}
+
   return(
       <div>
      <div className="max-w-sm w-full h-[480px] lg:max-w-full lg:flex justify-center mt-24">
@@ -143,6 +149,8 @@ async function FunEliminarJSON(){
       <div className="lg:border-l-0 lg:border-t-8 lg:border-[#C4E5DC] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
         <div className="mb-8">
         <div className='flex items-end justify-end'>
+        <button className='bg-[#74d4af] hover:bg-[#11754f]  rounded-md font-bold text-white w-20 h-10 text-center mx-3' 
+                          type='submit' onClick={() => ModificarPost()}>Editar</button>
                           <button className='bg-[#d4a374] hover:bg-[#753911]  rounded-md font-bold text-white w-20 h-10 text-center mx-3' 
                           type='submit' onClick={() => EliminarPost()}>Eliminar</button>
                       </div>

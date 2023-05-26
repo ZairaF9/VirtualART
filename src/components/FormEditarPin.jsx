@@ -57,23 +57,6 @@ const FormEditarPin = () => {
         setPinPic(Subir);
     }
 
-    const changePic = async () => {
-        //Subir foto al servidor
-        console.log("Subiendo imagen");
-      
-        var form = document.getElementById("formPublicacion");
-        var formData = new FormData(form);
-
-        const response = await fetch('http://localhost:3001/api/post/image',{
-            method: "POST",
-            body: formData,
-        });
-        console.log(response);
-        console.log("llamé la api");
-
-  
-    };
-    
     async function editPost(){
         const txtTitulo=document.getElementById("titulo");
         const txtDescripcion=document.getElementById("descripcion");
@@ -97,7 +80,7 @@ const FormEditarPin = () => {
         const bodyFetch = {title: txtTitulo.value, description: txtDescripcion.value, 
             category: categoria.value, user: cookies.get("ID_Usuario")};
 
-        const response = await fetch('http://localhost:3001/api/post/' + cookies.get("ID_Post"),{
+        const response1 = await fetch('http://localhost:3001/api/post/' + cookies.get("ID_Post"),{
             method: "PUT",
             body: JSON.stringify(bodyFetch),
             headers: {
@@ -105,7 +88,7 @@ const FormEditarPin = () => {
             }
 
         });
-        const status = await response.status;
+        const status = await response1.status;
         //Obtengo el código de respuesta (401 = fallido, 404 = usuario no existe 200 = inició sesión)
 
         console.log(status);
@@ -119,14 +102,15 @@ const FormEditarPin = () => {
         }
     }
 
+
     return (
-        <form id='formPublicacion' encType='multipart/form-data'>
+        <form id='formEditPublicacion'>
             <div className="max-w-sm w-full h-[480px] lg:max-w-full lg:flex justify-center mt-24">
             <input type='hidden' id='postID' name='postID' style={{visibility:false}}></input>
-                <img id='imageControlPost' src={PinPic} className='h-48 lg:h-auto lg:w-150 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden'/>
+               
                 <div className="lg:border-l-0 lg:border-b-8 w-[800px] lg:border-[#C4E5DC] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <div className="mb-8">
-                    <input type="file" id="image" name="image" onChange={() => changePic()} accept="image/png, image/jpeg"></input>
+                   
                         <div className='flex items-end justify-end'>
                             <button onClick={() => editPost()} className='bg-[#2bc5a4] hover:bg-[#11755f] rounded-md font-bold text-white w-20 h-10 text-center' type='button'>Editar</button>
                         </div>
