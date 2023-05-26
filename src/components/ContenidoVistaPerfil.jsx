@@ -22,7 +22,7 @@ const VistaContenidoPerfil = () =>{
     function ViewPost(id){
       const cookies = new Cookies();
       cookies.set('ID_Post', id, { path: '/' });
-      goToPage("/vistapin")
+      goToPage("/vistapinuser");
     }
   
 

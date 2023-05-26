@@ -17,6 +17,8 @@ import CrearTablero from "./Pages/CrearTablero";
 import TableroVistaContenido from "./components/TableroVistaContenido";
 import PostTableros from "./Pages/PostTableros";
 import FormEditarTablero from "./Pages/EditarTablero";
+import VistaImgUser from "./components/VistaImgPorUser";
+import VistaImagenUser from "./Pages/VistaImagenUser";
 
 
 function App() {
@@ -39,6 +41,8 @@ function App() {
           <Route path="/contenidotablero" element={<TableroVistaContenido/>}></Route>
           <Route path="/posttableros" element={<PostTableros/>}></Route>
           <Route path="/editartablero" element={<FormEditarTablero/>}></Route>
+          <Route path="/vistapinuser" element={<VistaImagenUser/>}></Route>
+          <Route path="/vistaimguser" element={<VistaImgUser/>}></Route>
       </Routes>
       </Router>
     </div>
