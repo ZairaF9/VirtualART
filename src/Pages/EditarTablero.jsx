@@ -70,8 +70,10 @@ return (
     <div className="max-w-sm w-full h-[480px] lg:max-w-full lg:flex justify-center mt-24">
     <input type='hidden' id='tableroID' name='tableroID' style={{visibility:false}}></input>
         <div className="lg:border-l-0 lg:border-b-8 w-[800px] lg:border-[#C4E5DC] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+       
             <div className="mb-8">
-                <div className='flex items-end justify-end'>
+            <h1 className='font-bold text-2xl text-center mt-5'>Editar Tablero</h1>
+                <div className='flex items-end justify-end mt-5'>
                     <button onClick={() => EditarTablero()} className='bg-[#2bc5a4] hover:bg-[#11755f] rounded-md font-bold text-white w-20 h-10 text-center' type='submit'>Editar</button>
                 </div>
                 <div>
@@ -85,7 +87,7 @@ return (
                     />
                 </div>
                 <div className="mt-5">
-                <input onChange={() => changePic()} type="file" id="imgtablero" name="imgtablero"  accept="image/png, image/jpeg"></input>
+              
                 </div>
                 
                

@@ -120,7 +120,7 @@ const FormEditarPin = () => {
     }
 
     return (
-        <form id='formPublicacion'>
+        <form id='formPublicacion' encType='multipart/form-data'>
             <div className="max-w-sm w-full h-[480px] lg:max-w-full lg:flex justify-center mt-24">
             <input type='hidden' id='postID' name='postID' style={{visibility:false}}></input>
                 <img id='imageControlPost' src={PinPic} className='h-48 lg:h-auto lg:w-150 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden'/>
