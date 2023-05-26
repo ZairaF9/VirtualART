@@ -171,6 +171,15 @@ const DiversoContent = () =>{
            <h1 id='tituloCat12' class="font-dmserif text-3xl font-bold text-white"></h1>
            </div>
            </div>
+           <div onClick= {() => seeCategory(13)} class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+            <div class="h-96 w-full">
+           <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-125" src = "http://localhost:3001/api/categories/image/13" alt="" />
+           </div>
+           <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+           <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+           <h1 id='tituloCat13' class="font-dmserif text-3xl font-bold text-white"></h1>
+           </div>
+           </div>
         </div>
         
     </div>
