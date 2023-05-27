@@ -105,6 +105,7 @@ const FormEditarPin = () => {
 
     return (
         <form id='formEditPublicacion'>
+               <h1 className='font-bold text-2xl text-center mt-5 pt-5'>Editar Publicación</h1>
             <div className="max-w-sm w-full h-[480px] lg:max-w-full lg:flex justify-center mt-24">
             <input type='hidden' id='postID' name='postID' style={{visibility:false}}></input>
                
