@@ -69,6 +69,28 @@ const TableroVistaContenido = () => {
   }
 
   async function EliminarTablero(){
+    swal({
+      title: "Estas Seguro?",
+      text: "Al eliminar no podrás recuperar el tablero creado!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("La publicacion ha sido quitada del tablero", {
+          icon: "success",
+        });
+
+       EliminarTableroJSON();
+        
+      } else {
+        swal("Se ha cancelado");
+      }
+    });
+  }
+
+  async function EliminarTableroJSON(){
     const cookies = new Cookies();
 
     const response = await fetch('http://localhost:3001/api/posttablero/' + cookies.get("ID_Tablero"), {
