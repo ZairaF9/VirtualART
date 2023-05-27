@@ -95,6 +95,7 @@ return (
     <input type='hidden' id='tableroID' name='tableroID' style={{visibility:false}}></input>
         <div className="lg:border-l-0 lg:border-b-8 w-[800px] lg:border-[#C4E5DC] bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div className="mb-8">
+            <h1 className='font-bold text-2xl text-center mt-5'>Crear Tablero</h1>
                 <div className='flex items-end justify-end'>
                     <button onClick={() => createTablero()} className='bg-[#2bc5a4] hover:bg-[#11755f] rounded-md font-bold text-white w-20 h-10 text-center' type='submit'>Crear</button>
                 </div>
