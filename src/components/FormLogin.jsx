@@ -54,7 +54,7 @@ const FormLogin = () => {
         console.log("Validaciones pasadas, tratando de  iniciar sesión");
         const bodyFetch = {email: emailtxt.value, password: passwordtxt.value};
 
-        const response = await fetch('http://localhost:3001/api/users/login',{
+        const response = await fetch('https://virtualart-back.onrender.com',{
             method: "POST",
             body: JSON.stringify(bodyFetch),
             headers: {
